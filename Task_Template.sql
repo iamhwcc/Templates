@@ -15,11 +15,21 @@
 
   
 -- 调参区域
-set hive.support.concurrency=false;             --关闭锁机制
-set hive.exec.parallel=true;                    --开启同一个sql中任务并行
-set hive.exec.parallel.thread.number=32;        --指定同一个sql允许并行运行的最大线程数。
-set hive.auto.convert.join=true;                --自动化 MapJoin
-
+set hive.auto.convert.join = true;  --自动化 MapJoin
+set hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;
+set hive.hadoop.supports.splittable.combineinputformat=true;
+set mapred.max.split.size=256000000;
+set mapred.min.split.size.per.node=256000000;
+set mapred.min.split.size.per.rack=256000000;
+set hive.merge.size.per.task =256000000;
+set hive.merge.mapfiles=true;
+set hive.merge.mapredfiles = true;
+set hive.merge.smallfiles.avgsize=256000000;
+set hive.exec.parallel=true;
+set hive.exec.parallel.thread.number=32; --指定同一个sql允许并行运行的最大线程数。
+set hive.support.concurrency=false;
+set hive.optimize.index.filter=false; -- 解决union all出现数据关联不上问题
+set hive.optimize.cte.materialize.threshold=2; -- with片段hive计算时物化进内存不用重复计算
 
 -- 开发代码区域
 
