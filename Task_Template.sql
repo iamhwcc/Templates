@@ -30,6 +30,8 @@ set hive.exec.parallel.thread.number=32; --指定同一个sql允许并行运行�
 set hive.support.concurrency=false;
 set hive.optimize.index.filter=false; -- 解决union all出现数据关联不上问题
 set hive.optimize.cte.materialize.threshold=2; -- with片段hive计算时物化进内存不用重复计算
+-- set hive.exec.dynamic.partition=true;           -- 动态分区
+-- set hive.exec.dynamic.partition.mode=nonstrict; -- 动态分区
 
 -- 开发代码区域
 
